@@ -6,6 +6,7 @@ function Astronauts() {
   const dispatch = useDispatch();
 
   const astronauts = useSelector((state) => state.astronauts.entities);
+  const isLoading = useSelector((state) => state.astronauts.isLoading);
 
   function handleClick() {
     // dispatch the action creator (see below!)
@@ -19,7 +20,7 @@ function Astronauts() {
   return (
     <div>
       <button onClick={handleClick}>Get Astronauts</button>
-      {astronautsList}
+      {!isLoading ? astronautsList : <h1>Loading...</h1>}
     </div>
   );
 }
